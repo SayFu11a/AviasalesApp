@@ -1,23 +1,26 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setFilter } from '../../Redux/actions';
 
 import { Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадка', '3 пересадка'];
-const defaultCheckedList = ['Без пересадок'];
 
 import styles from './Filter.module.scss';
 
 const Filter = () => {
-    const [checkedList, setCheckedList] = useState(defaultCheckedList);
+    const dispatch = useDispatch();
+    const checkedList = useSelector((state) => state.filterReduser.checkedList);
+
     const checkAll = plainOptions.length === checkedList.length;
     const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
+
     const onChange = (list) => {
-        setCheckedList(list);
+        dispatch(setFilter(list));
     };
     const onCheckAllChange = (e) => {
-        setCheckedList(e.target.checked ? plainOptions : []);
+        dispatch(setFilter(e.target.checked ? plainOptions : []));
     };
-    console.log(checkedList);
 
     return (
         <section className={styles.mainSection}>

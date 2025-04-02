@@ -1,14 +1,10 @@
-import './App.scss';
 import Logo from '../Logo';
 import Filter from '../Filter';
 import MyTabs from '../MyTabs';
 
-function App() {
-    // async function reques() {
-    //     const res = await fetch('https://front-test.dev.aviasales.ru/search');
-    // }
-    // reques();
+import './App.scss';
 
+function App() {
     return (
         <>
             <Logo />
