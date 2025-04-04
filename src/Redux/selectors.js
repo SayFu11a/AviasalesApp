@@ -83,8 +83,6 @@ export const getFiltredTickets = createSelector(
                 break;
         }
 
-        console.log('------------------>>>', filtredTickeds);
-
         return filtredTickeds;
     }
 );

@@ -1,9 +1,7 @@
 import { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { setActiveTabAction } from '../../Redux/actions';
-
 import { Tabs } from 'antd';
-
 import TicketList from '../TicketList';
 
 const MyTabs = ({ activeKey, setActiveTab }) => {
@@ -25,7 +23,7 @@ const MyTabs = ({ activeKey, setActiveTab }) => {
                 children: <TicketList />,
             },
         ],
-        [activeKey]
+        []
     );
 
     return <Tabs activeKey={activeKey} onChange={setActiveTab} type="card" items={items} />;
