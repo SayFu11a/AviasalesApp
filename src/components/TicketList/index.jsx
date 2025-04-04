@@ -7,6 +7,7 @@ import Ticket from '../Ticket';
 import { useEffect, useState } from 'react';
 
 import { Button, Empty, Typography } from 'antd';
+import Sceleton from '../Sceleton/Sceleton';
 
 function TicketList() {
     const { searchId, loading, error, tickets } = useSelector((state) => state.data);
@@ -47,7 +48,7 @@ function TicketList() {
                     ></Empty>
                 )
             ) : (
-                <span>...загрузка</span>
+                [1, 2, 3, 4, 5].map((i) => <Sceleton key={i} />)
             )}
         </>
     );
