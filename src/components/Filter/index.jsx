@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFilter, setAsynkFilter } from '../../Redux/actions';
+import { setFilter } from '../../Redux/actions';
 
 import { Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
@@ -21,10 +21,6 @@ const Filter = () => {
     };
     const onCheckAllChange = (e) => {
         dispatch(setFilter(e.target.checked ? plainOptions : []));
-    };
-
-    const onAsynkShit = (list) => {
-        dispatch(setAsynkFilter(list));
     };
 
     return (

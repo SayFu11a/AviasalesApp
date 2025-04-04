@@ -10,7 +10,7 @@ import { Button, Empty, Typography } from 'antd';
 import Sceleton from '../Sceleton/Sceleton';
 
 function TicketList() {
-    const { searchId, loading, error, tickets } = useSelector((state) => state.data);
+    const { searchId, loading, error } = useSelector((state) => state.data);
 
     const filteredTickeds = useSelector(getFiltredTickets);
 
