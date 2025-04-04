@@ -17,12 +17,12 @@ const MyTabs = ({ activeKey, setActiveTab }) => {
             {
                 label: 'Самый быстрый',
                 key: '2',
-                children: 'Content of editable tab 2',
+                children: <TicketList />,
             },
             {
                 label: 'Оптимальный',
                 key: '3',
-                children: 'Content of editable tab 3',
+                children: <TicketList />,
             },
         ],
         [activeKey]

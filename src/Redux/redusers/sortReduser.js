@@ -1,4 +1,4 @@
-import { setActiveTab } from './types';
+import { setActiveTab } from '../types';
 
 const initialState = {
     activeKey: '1',

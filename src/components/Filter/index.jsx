@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFilter } from '../../Redux/actions';
+import { setFilter, setAsynkFilter } from '../../Redux/actions';
 
 import { Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
-const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадка', '3 пересадка'];
 
 import styles from './Filter.module.scss';
+
+const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадка', '3 пересадка'];
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,10 @@ const Filter = () => {
     };
     const onCheckAllChange = (e) => {
         dispatch(setFilter(e.target.checked ? plainOptions : []));
+    };
+
+    const onAsynkShit = (list) => {
+        dispatch(setAsynkFilter(list));
     };
 
     return (
