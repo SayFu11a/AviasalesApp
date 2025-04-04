@@ -74,8 +74,10 @@ export function fetchSearchId() {
 export function fetchTickets(searchId) {
     return async function (dispatch) {
         let stop = false;
-        while (!stop) {
+        let isFetching = false;
+        while (!stop && !isFetching) {
             try {
+                isFetching = true;
                 const response = await fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`);
 
                 if (!response.ok) {
@@ -87,9 +89,11 @@ export function fetchTickets(searchId) {
                 dispatch(fetchTicketsSuccess(tickets.tickets));
 
                 stop = tickets.stop;
+                isFetching = false;
             } catch (error) {
                 console.log(fetchTicketsFail(error.message));
                 // throw error;
+                isFetching = false;
             }
         }
     };

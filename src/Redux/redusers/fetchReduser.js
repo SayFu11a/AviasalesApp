@@ -5,6 +5,7 @@ const initialState = {
     searchId: null,
     loading: false,
     error: null,
+    isDataLoaded: false,
 };
 
 export const fetchReduser = (state = initialState, action) => {
@@ -25,6 +26,7 @@ export const fetchReduser = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 tickets: [...state.tickets, ...action.tickets],
+                isDataLoaded: true,
             };
         case FETCH_POSTS_FAILURE:
             return {

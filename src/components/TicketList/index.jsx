@@ -1,27 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchSearchId, fetchTickets } from '../../Redux/actions';
+import { useSelector } from 'react-redux';
 
 import { getFiltredTickets } from '../../Redux/selectors';
 
 import Ticket from '../Ticket';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Empty, Typography, Alert } from 'antd';
 import Sceleton from '../Sceleton/Sceleton';
 
 function TicketList() {
-    const { searchId, loading, error } = useSelector((state) => state.data);
+    const { loading, error } = useSelector((state) => state.data);
     const filteredTickeds = useSelector(getFiltredTickets);
     const [page, setPage] = useState(0);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (!searchId) {
-            dispatch(fetchSearchId()).catch((err) => console.error('Ошибка получения searchId:', err));
-        } else {
-            dispatch(fetchTickets(searchId.searchId));
-        }
-    }, [dispatch, searchId]);
 
     return (
         <>
