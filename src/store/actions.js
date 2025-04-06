@@ -21,14 +21,6 @@ export function setFilter(filterList) {
     };
 }
 
-export function setAsynkFilter(filterList) {
-    return (dispatch) => {
-        setTimeout(() => {
-            dispatch(setFilter(filterList));
-        }, 3000);
-    };
-}
-
 export function fetchTicketsStart() {
     return {
         type: FETCH_POSTS_REQUEST,
@@ -75,26 +67,26 @@ export function fetchTickets(searchId) {
     return async function (dispatch) {
         let stop = false;
         let isFetching = false;
-        while (!stop && !isFetching) {
-            try {
-                isFetching = true;
-                const response = await fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`);
+        // while (!stop && !isFetching) {
+        try {
+            isFetching = true;
+            const response = await fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`);
 
-                if (!response.ok) {
-                    console.log(`Server error: ${response.status}`);
-                }
-
-                const tickets = await response.json();
-
-                dispatch(fetchTicketsSuccess(tickets.tickets));
-
-                stop = tickets.stop;
-                isFetching = false;
-            } catch (error) {
-                console.log(fetchTicketsFail(error.message));
-                // throw error;
-                isFetching = false;
+            if (!response.ok) {
+                console.log(`Server error: ${response.status}`);
             }
+
+            const tickets = await response.json();
+
+            dispatch(fetchTicketsSuccess(tickets.tickets));
+
+            stop = tickets.stop;
+            isFetching = false;
+        } catch (error) {
+            console.log(fetchTicketsFail(error.message));
+            // throw error;
+            isFetching = false;
         }
+        // }
     };
 }

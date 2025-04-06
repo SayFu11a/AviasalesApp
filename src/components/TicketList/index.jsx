@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { getFiltredTickets } from '../../Redux/selectors';
+import { getFiltredTickets } from '../../store/selectors';
 
 import Ticket from '../Ticket';
 import { useState } from 'react';
@@ -9,7 +9,7 @@ import { Button, Empty, Typography, Alert } from 'antd';
 import Sceleton from '../Sceleton/Sceleton';
 
 function TicketList() {
-    const { loading, error } = useSelector((state) => state.data);
+    const { loading, error } = useSelector((state) => state.tickets);
     const filteredTickeds = useSelector(getFiltredTickets);
     const [page, setPage] = useState(0);
 
@@ -20,7 +20,7 @@ function TicketList() {
                     filteredTickeds.length > 0 ? (
                         <>
                             {filteredTickeds?.slice(0, (page + 1) * 5).map((ticket) => (
-                                <Ticket key={ticket.segments[0].date} ticket={ticket} />
+                                <Ticket key={new Date().getMilliseconds() + ticket.price} ticket={ticket} />
                             ))}
                             <Button
                                 type="primary"

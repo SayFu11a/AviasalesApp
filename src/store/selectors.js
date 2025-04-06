@@ -1,6 +1,6 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
-const getTickets = (state) => state.data.tickets;
+const getTickets = (state) => state.tickets.tickets;
 const getCheckedList = (state) => state.filterReduser.checkedList;
 const getActiveKey = (state) => state.sortReduser.activeKey;
 
