@@ -20,7 +20,7 @@ function TicketList() {
                     filteredTickeds.length > 0 ? (
                         <>
                             {filteredTickeds?.slice(0, (page + 1) * 5).map((ticket) => (
-                                <Ticket key={new Date().getMilliseconds() + ticket.price} ticket={ticket} />
+                                <Ticket ticket={ticket} />
                             ))}
                             <Button
                                 type="primary"
