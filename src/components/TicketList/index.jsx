@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 import { getFiltredTickets } from '../../store/selectors';
 
@@ -20,7 +21,7 @@ function TicketList() {
                     filteredTickeds.length > 0 ? (
                         <>
                             {filteredTickeds?.slice(0, (page + 1) * 5).map((ticket) => (
-                                <Ticket ticket={ticket} />
+                                <Ticket ticket={ticket} key={uuidv4()} />
                             ))}
                             <Button
                                 type="primary"
