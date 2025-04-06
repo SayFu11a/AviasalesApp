@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { setFilter } from '../../Redux/actions';
-
 import { setFilter } from '../../store/slices/filterSlice';
 
 import { Checkbox } from 'antd';
@@ -14,8 +12,6 @@ const plainOptions = ['Без пересадок', '1 пересадка', '2 п
 const Filter = () => {
     const dispatch = useDispatch();
     const checkedList = useSelector((state) => state.filterReduser.checkedList);
-
-    // const checkedList = useSelector((state) => state.filterReduser.checkedList);
 
     const checkAll = plainOptions.length === checkedList.length;
     const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;

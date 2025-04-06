@@ -53,15 +53,7 @@ const fetchSlice = createSlice({
             state.loading = false;
             state.isDataLoaded = true;
         },
-        fetchTicketsRequest(state, action) {
-            console.log(state, action);
-            state.loading = true;
-        },
 
-        fetchSearchIdSuccess(state, action) {
-            state.loading = true;
-            state.searchId = action.payload.searchId;
-        },
         fetchTicketsFailure(state, action) {
             state.loading = false;
             state.error = action.payload.error;
@@ -69,7 +61,7 @@ const fetchSlice = createSlice({
     },
 
     extraReducers: (builder) => {
-        builder.addCase(fetchSearchId.pending, (state, action) => {
+        builder.addCase(fetchSearchId.pending, (state) => {
             state.loading = true;
         });
         builder.addCase(fetchSearchId.fulfilled, (state, action) => {
@@ -86,7 +78,6 @@ const fetchSlice = createSlice({
     },
 });
 
-export const { fetchTicketsRequest, fetchSearchIdSuccess, fetchTicketsSuccess, fetchTicketsFailure } =
-    fetchSlice.actions;
+export const { fetchTicketsSuccess, fetchTicketsFailure } = fetchSlice.actions;
 
 export default fetchSlice.reducer;
